@@ -9,3 +9,6 @@ jobs:
     steps:
     - name: Wait for required checks
       uses: roryq/required-checks@master
+      with:
+        required_workflow_patterns: |
+          - build
