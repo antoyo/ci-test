@@ -19,7 +19,14 @@ jobs:
     - uses: actions/checkout@v4
 
     - name: Print artifact
+      if: ${{ contains(matrix.libgccjit_version.gcc, 'without') }}
       run: echo ${{ matrix.libgccjit_version.gcc }}
+
+    - name: Print artifact
+      if: ${{ !contains(matrix.libgccjit_version.gcc, 'without') }}
+      run: |
+        echo ${{ matrix.libgccjit_version.gcc }}
+        exit 1
 
   duplicates:
     runs-on: ubuntu-24.04
