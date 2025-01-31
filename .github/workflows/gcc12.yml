@@ -5,6 +5,15 @@ on:
   - pull_request
 
 jobs:
+  required-checks:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Wait for required checks
+      uses: roryq/required-checks@master
+      with:
+        required_workflow_patterns: |
+          - .*
+
   build:
     runs-on: ubuntu-24.04
 
